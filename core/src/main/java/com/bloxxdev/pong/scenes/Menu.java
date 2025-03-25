@@ -16,6 +16,8 @@ public class Menu extends ScreenAdapter{
     SpriteBatch batch;
     Texture pongLogo;
 
+    private static final int LOGO_SCALING = 10;
+
     @Override
     public void show() {
         shouldRender = true;
@@ -28,12 +30,23 @@ public class Menu extends ScreenAdapter{
 
     @Override
     public void render(float delta) {
+        //Render loop only renders if the render flag is true (aka if the menu is open)
         if (shouldRender) {
+            //Scaling the Logo Size by the Scaling factor
+            int logoWidth = pongLogo.getWidth()*LOGO_SCALING;
+            int logoHeight = pongLogo.getHeight()*LOGO_SCALING;
+
+            //XPos of the logo in the middle of the screen
+            int xLogoPos = Gdx.graphics.getWidth()/2 - logoWidth/2;
+
+            //YPos of the logo: 50 px below the top of the screen
+            int yLogoPos = Gdx.graphics.getHeight() - logoHeight - 50;
+
             batch.begin();
             
             //Rendering the logo
-            batch.draw(pongLogo, 0, 0, pongLogo.getWidth()*10, pongLogo.getHeight()*10);
-            
+            batch.draw(pongLogo, xLogoPos, yLogoPos, logoWidth, logoHeight);
+
             batch.end();
         }
     }
