@@ -9,6 +9,8 @@ import com.bloxxdev.pong.scenes.Menu;
 /*  */
 public class Main extends ApplicationAdapter {
 
+    Screen menuScreen;
+
     /*
      * Create
      * creates the Application. The init method
@@ -16,7 +18,7 @@ public class Main extends ApplicationAdapter {
     @Override
     public void create() {
         //On init Warp the player in the Main Menu
-        Screen menuScreen = new Menu();
+        menuScreen = new Menu();
         menuScreen.show();
     }
 
@@ -25,8 +27,9 @@ public class Main extends ApplicationAdapter {
      */
     @Override
     public void render() {
-        //Render the current color buffer
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        menuScreen.render(0);
     }
 
     /*
@@ -34,6 +37,7 @@ public class Main extends ApplicationAdapter {
      */
     @Override
     public void dispose() {
-
+        menuScreen.dispose();
+        System.exit(0);
     }
 }
