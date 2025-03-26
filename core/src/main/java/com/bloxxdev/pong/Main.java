@@ -9,6 +9,8 @@ import com.bloxxdev.pong.screens.Menu;
 /*  */
 public class Main extends ApplicationAdapter {
 
+    public static Main instance;
+
     Screen menuScreen;
 
     /*
@@ -17,9 +19,15 @@ public class Main extends ApplicationAdapter {
      */
     @Override
     public void create() {
+        instance = this;
+
         //On init Warp the player in the Main Menu
         menuScreen = new Menu();
         menuScreen.show();
+    }
+
+    public void update(){
+        ((Menu)menuScreen).tick();
     }
 
     /*
@@ -27,6 +35,8 @@ public class Main extends ApplicationAdapter {
      */
     @Override
     public void render() {
+        update();
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         menuScreen.render(0);
