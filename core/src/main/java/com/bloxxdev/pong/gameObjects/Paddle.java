@@ -1,5 +1,6 @@
 package com.bloxxdev.pong.gameObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -27,7 +28,9 @@ public class Paddle {
     ShapeRenderer renderer;
 
     private void move(int direction){
-        y += SPEED*direction;
+        if (y + SPEED*direction >= 0 && y + SPEED*direction <= Gdx.graphics.getHeight() - PADDLE_HEIGHT) {
+            y += SPEED*direction;
+        }
     }
 
     public Paddle(int x, int y){

@@ -66,6 +66,7 @@ public class PongGame extends ScreenAdapter{
     }
 
     private void checkKeys(){
+        //Left Paddle Controls
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             leftPaddle.direction[Paddle.UP] = true;
         }else{
@@ -77,6 +78,7 @@ public class PongGame extends ScreenAdapter{
             leftPaddle.direction[Paddle.DOWN] = false;
         }
 
+        //Right Paddle Controls
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             rightPaddle.direction[Paddle.UP] = true;
         }else{
