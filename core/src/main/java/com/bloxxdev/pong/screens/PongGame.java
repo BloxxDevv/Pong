@@ -1,11 +1,11 @@
 package com.bloxxdev.pong.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.bloxxdev.pong.gameObjects.Paddle;
 
 public class PongGame extends ScreenAdapter{
-    
     //Flag whether the game should render or not
     public boolean shouldRender = false;
 
@@ -32,6 +32,9 @@ public class PongGame extends ScreenAdapter{
 
     public void tick(){
         if (shouldTick) {
+            //Check for any inputs
+            checkKeys();
+
             //Move players
             leftPaddle.tick();
             rightPaddle.tick();
@@ -60,5 +63,29 @@ public class PongGame extends ScreenAdapter{
 
         leftPaddle.dispose();
         rightPaddle.dispose();
+    }
+
+    private void checkKeys(){
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
+            leftPaddle.direction[Paddle.UP] = true;
+        }else{
+            leftPaddle.direction[Paddle.UP] = false;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
+            leftPaddle.direction[Paddle.DOWN] = true;
+        }else{
+            leftPaddle.direction[Paddle.DOWN] = false;
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
+            rightPaddle.direction[Paddle.UP] = true;
+        }else{
+            rightPaddle.direction[Paddle.UP] = false;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {
+            rightPaddle.direction[Paddle.DOWN] = true;
+        }else{
+            rightPaddle.direction[Paddle.DOWN] = false;
+        }
     }
 }
