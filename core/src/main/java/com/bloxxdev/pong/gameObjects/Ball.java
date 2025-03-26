@@ -15,6 +15,7 @@ public class Ball {
 
     ShapeRenderer renderer;
 
+    //Ball constructor (x,y = position)
     public Ball(int x, int y){
         this.x = x;
         this.y = y;
@@ -22,10 +23,12 @@ public class Ball {
         renderer = new ShapeRenderer();
     }
 
+    //Ball calculations/movement
     public void tick(){
         
     }
 
+    //Ball rendering (just a square)
     public void render(){
         renderer.begin(ShapeType.Filled);
         renderer.setColor(Color.WHITE);
@@ -33,6 +36,7 @@ public class Ball {
         renderer.end();
     }
 
+    //Free memory
     public void dispose(){
         renderer.dispose();
     }

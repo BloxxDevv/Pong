@@ -42,11 +42,13 @@ public class Main extends ApplicationAdapter {
      */
     @Override
     public void render() {
+        //Calculate current positions
         update();
 
+        //Clear the color buffer making the screen whatever the BG color is set to
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        //Render shown screens
+        //Render objects
         menuScreen.render(0);
         pongGameScreen.render(0);
     }

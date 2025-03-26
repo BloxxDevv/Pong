@@ -21,18 +21,21 @@ public class Paddle {
     private int x;
     private int y;
 
+    //Directions of movement true = moves in that direction. UP == DOWN means no movement
     public boolean[] direction = new boolean[]{
         false, false,       //UP       , DOWN 
     };
 
     ShapeRenderer renderer;
 
+    //Move if the paddle stays in the boundries
     private void move(int direction){
         if (y + SPEED*direction >= 0 && y + SPEED*direction <= Gdx.graphics.getHeight() - PADDLE_HEIGHT) {
             y += SPEED*direction;
         }
     }
 
+    //Paddle constructor x,y = startpos
     public Paddle(int x, int y){
         this.x = x;
         this.y = y;
@@ -40,6 +43,7 @@ public class Paddle {
         renderer = new ShapeRenderer();
     }
 
+    //Tick to handle calculations
     public void tick(){
         if (direction[UP] != direction[DOWN]) {
             if (direction[UP]) {
@@ -51,6 +55,7 @@ public class Paddle {
         }
     }
 
+    //Rendering (just a rectangle)
     public void render(){
         renderer.begin(ShapeType.Filled);
         renderer.setColor(Color.WHITE);
@@ -58,6 +63,7 @@ public class Paddle {
         renderer.end();
     }
 
+    //free memory
     public void dispose(){
         renderer.dispose();
     }
