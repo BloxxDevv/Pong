@@ -12,6 +12,9 @@ public class Menu extends ScreenAdapter{
 
     //Flag whether the menu should render or not
     public boolean shouldRender = false;
+    
+    //Flag whether the game should tick or not
+    public boolean shouldTick = false;
 
     private SpriteBatch batch;
     private Texture pongLogo;
@@ -53,7 +56,10 @@ public class Menu extends ScreenAdapter{
 
     @Override
     public void show() {
+        //Set the loop flags
+        shouldTick = true;
         shouldRender = true;
+        
         //Change the background color
         Gdx.gl.glClearColor(BG_COLOR[0], BG_COLOR[1], BG_COLOR[2], 1);
 
@@ -92,25 +98,27 @@ public class Menu extends ScreenAdapter{
     }
 
     public void tick(){
-        if (mouseEntered(xStartPos, yStartPos, startButtonWidth, startButtonHeight)){
-            startButtonState = 1;
-            
-            //Start Game
-            if (Gdx.input.isTouched()) {
+        if (shouldTick) {
+            if (mouseEntered(xStartPos, yStartPos, startButtonWidth, startButtonHeight)){
+                startButtonState = 1;
                 
+                //Start Game
+                if (Gdx.input.isTouched()) {
+                     hide();
+                }
+            }else{
+                startButtonState = 0;
             }
-        }else{
-            startButtonState = 0;
-        }
-        if (mouseEntered(xQuitPos, yQuitPos, quitButtonWidth, quitButtonHeight)){
-            quitButtonState = 1;
-            
-            //If the Quit button is pressed, clear ressources then close the game
-            if (Gdx.input.isTouched()) {
-                Main.instance.dispose();
+            if (mouseEntered(xQuitPos, yQuitPos, quitButtonWidth, quitButtonHeight)){
+                quitButtonState = 1;
+                
+                //If the Quit button is pressed, clear ressources then close the game
+                if (Gdx.input.isTouched()) {
+                    Main.instance.dispose();
+                }
+            }else{
+                quitButtonState = 0;
             }
-        }else{
-            quitButtonState = 0;
         }
     }
 
@@ -138,9 +146,18 @@ public class Menu extends ScreenAdapter{
 
     @Override
     public void dispose() {
+        //Remove tick flags
+        shouldTick = false;
         shouldRender = false;
-        batch.dispose();
+        
+        //Dispose to save memory
         pongLogo.dispose();
+        for (int i = 0; i < startButtonTextures.length; i++) {
+            startButtonTextures[i].dispose();
+        }
+        for (int i = 0; i < quitButtonTextures.length; i++) {
+            quitButtonTextures[i].dispose();
+        }
     }
 
     /*
