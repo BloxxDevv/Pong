@@ -1,5 +1,6 @@
 package com.bloxxdev.pong.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
 
 public class PongGame extends ScreenAdapter{
@@ -15,6 +16,8 @@ public class PongGame extends ScreenAdapter{
         //Set flags
         shouldTick = true;
         shouldRender = true;
+
+        Gdx.gl.glClearColor(0, 0, 0, 0);
     }
 
     public void tick(){

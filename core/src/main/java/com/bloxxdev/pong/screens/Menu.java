@@ -105,6 +105,7 @@ public class Menu extends ScreenAdapter{
                 //Start Game
                 if (Gdx.input.isTouched()) {
                      hide();
+                     Main.instance.pongGameScreen.show();
                 }
             }else{
                 startButtonState = 0;
