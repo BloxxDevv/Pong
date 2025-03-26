@@ -19,6 +19,10 @@ public class PongGame extends ScreenAdapter{
 
     private Ball ball;
 
+    private boolean side = false; //False = left, True = right
+
+    public static boolean paused = true;
+
     @Override
     public void show() {
         //Set flags
@@ -75,14 +79,23 @@ public class PongGame extends ScreenAdapter{
     }
 
     private void checkKeys(){
+        //Once any paddle moves the ball starts moving
         //Left Paddle Controls
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             leftPaddle.direction[Paddle.UP] = true;
+            if (paused) {
+                ball.direction[Ball.UP] = true;
+            }
+            paused = false;
         }else{
             leftPaddle.direction[Paddle.UP] = false;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             leftPaddle.direction[Paddle.DOWN] = true;
+            if (paused) {
+                ball.direction[Ball.DOWN] = true;
+            }
+            paused = false;
         }else{
             leftPaddle.direction[Paddle.DOWN] = false;
         }
@@ -90,11 +103,19 @@ public class PongGame extends ScreenAdapter{
         //Right Paddle Controls
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             rightPaddle.direction[Paddle.UP] = true;
+            if (paused) {
+                ball.direction[Ball.UP] = true;
+            }
+            paused = false;
         }else{
             rightPaddle.direction[Paddle.UP] = false;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {
             rightPaddle.direction[Paddle.DOWN] = true;
+            if (paused) {
+                ball.direction[Ball.DOWN] = true;
+            }
+            paused = false;
         }else{
             rightPaddle.direction[Paddle.DOWN] = false;
         }
