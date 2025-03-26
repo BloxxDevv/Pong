@@ -3,6 +3,7 @@ package com.bloxxdev.pong.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.bloxxdev.pong.gameObjects.Ball;
 import com.bloxxdev.pong.gameObjects.Paddle;
 
 public class PongGame extends ScreenAdapter{
@@ -16,6 +17,8 @@ public class PongGame extends ScreenAdapter{
     private Paddle leftPaddle;
     private Paddle rightPaddle;
 
+    private Ball ball;
+
     @Override
     public void show() {
         //Set flags
@@ -28,6 +31,8 @@ public class PongGame extends ScreenAdapter{
         //Paddles
         leftPaddle = new Paddle(0, Gdx.graphics.getHeight()/2-Paddle.PADDLE_HEIGHT/2);
         rightPaddle = new Paddle(Gdx.graphics.getWidth()-Paddle.PADDLE_WIDTH, Gdx.graphics.getHeight()/2-Paddle.PADDLE_HEIGHT/2);
+    
+        ball = new Ball(Paddle.PADDLE_WIDTH, Gdx.graphics.getHeight()/2-Ball.BALL_SIZE/2);
     }
 
     public void tick(){
@@ -38,6 +43,8 @@ public class PongGame extends ScreenAdapter{
             //Move players
             leftPaddle.tick();
             rightPaddle.tick();
+
+            ball.tick();
         }
     }
 
@@ -47,6 +54,8 @@ public class PongGame extends ScreenAdapter{
             //Render players
             leftPaddle.render();
             rightPaddle.render();
+            
+            ball.render();
         }
     }
 
