@@ -1,0 +1,165 @@
+1. Pong Clone (Difficulty: Easy)
+
+Client: Retro Arcade Museum
+Description:
+Our museum wants a simple yet polished recreation of the classic game Pong. Players should be able to control paddles using the keyboard, and the ball should bounce realistically. The game should have a start menu, a score display, and simple sound effects. Make sure to write clean, well-documented code, as we might want to add features in the future.
+
+Core Skills:
+
+    Handling keyboard input
+
+    Collision detection
+
+    Basic physics (ball bouncing)
+
+    Simple game state management
+
+2. Breakout Clone (Difficulty: Normal)
+
+Client: Indie Mobile Studio
+Description:
+We want a fun Breakout-style game where players control a paddle at the bottom of the screen to break bricks with a bouncing ball. Bricks should break upon contact, and some should drop power-ups like expanding the paddle or increasing ball speed. Please include a pause function and a basic level system. Document all mechanics clearly for future updates.
+
+Core Skills:
+
+    More advanced collision detection
+
+    Simple physics (velocity, direction changes)
+
+    Object-oriented programming (breaking game elements into reusable classes)
+
+    Power-ups and status effects
+
+3. Top-Down Shooter (Difficulty: Hard)
+
+Client: Local Esports Bar
+Description:
+We need a simple top-down shooter game where the player moves using WASD and shoots using the mouse. Enemies should spawn randomly and move toward the player. The game should track score and difficulty should increase over time. Please write modular and well-documented code since we may want to add multiplayer later.
+
+Core Skills:
+
+    Player movement in 8 directions
+
+    Enemy AI (basic pathfinding)
+
+    Projectile mechanics
+
+    UI elements (score, health bar)
+
+4. Zelda-Like Dungeon Explorer (Difficulty: Harder)
+
+Client: Pixel Art Game Jam
+Description:
+We’re looking for a Legend of Zelda-inspired dungeon explorer game. The player should navigate multiple rooms, defeat enemies, and collect keys to unlock doors. Rooms should connect seamlessly, and enemies should have simple but varied behaviors. Include an inventory system and basic combat. Well-structured and documented code is a must.
+
+Core Skills:
+
+    Multi-room level design
+
+    State-based game architecture
+
+    Inventory management
+
+    Simple enemy AI (patrolling, attacking)
+
+5. Tower Defense Game (Difficulty: Insane)
+
+Client: Mobile Gaming Startup
+Description:
+We need a polished Tower Defense game where players place turrets on a grid to stop waves of enemies. Turrets should have different attack patterns and upgrade paths. Enemies should have unique movement and resistances. Include a UI to display wave progress and tower upgrades. Please use clear class structures and detailed documentation.
+
+Core Skills:
+
+    Pathfinding for enemies (A* or similar)
+
+    Strategy-based gameplay (balancing towers and enemies)
+
+    UI with upgrade options
+
+    Resource management (placing towers with limited money)
+
+6. Metroidvania with Ability Unlocks (Difficulty: Easy Demon)
+
+Client: Indie Game Festival
+Description:
+Create a side-scrolling Metroidvania game where the player starts with limited abilities but unlocks more (e.g., double jump, wall climb) to access new areas. Levels should be interconnected and require exploration. Include a save system and a small boss fight. Code should be well-documented for possible future content expansions.
+
+Core Skills:
+
+    Platformer physics (jumping, wall climbing)
+
+    Level design with backtracking
+
+    Save/load system
+
+    Boss fight mechanics
+
+7. Simple Multiplayer Online RPG (Difficulty: Medium Demon)
+
+Client: Experimental Indie Studio
+Description:
+Develop a basic online RPG where multiple players can move around a shared world, fight basic enemies, and chat with each other. The game should use a simple client-server model. Include a leveling system and item drops. Code clarity and documentation are essential for network-related components.
+
+Core Skills:
+
+    Multiplayer networking (basic client-server communication)
+
+    Character progression system (XP, leveling)
+
+    Online chat system
+
+    Inventory and item drops
+
+8. Turn-Based Strategy Game (Difficulty: Hard Demon)
+
+Client: Board Game Adaptation Project
+Description:
+We need a turn-based tactics game similar to Fire Emblem or Advance Wars. Players should control a squad of units on a grid-based battlefield, each with unique abilities. Implement AI for enemy decision-making. Units should gain experience and level up. The game should have an intuitive UI for selecting and moving units. Documentation should be extensive due to the complexity of turn-based logic.
+
+Core Skills:
+
+    Grid-based movement and pathfinding
+
+    Turn-based game loops
+
+    AI for enemy decision-making
+
+    UI for displaying stats and actions
+
+9. Fully-Fledged 2D RPG with Quest System (Difficulty: Insane Demon)
+
+Client: Mid-Sized Indie Studio
+Description:
+We need a deep RPG experience with real-time combat, multiple NPCs, and a quest system. Players should explore a large world, collect items, and complete story-driven quests. Implement a dialogue system, an inventory, and skill progression. The game should be structured for easy content updates. Well-documented, modular code is required.
+
+Core Skills:
+
+    Large-scale world management
+
+    Quest system (tracking objectives, updating progress)
+
+    Dialogue system with branching choices
+
+    Combat mechanics with different attack types
+
+10. Procedurally Generated Roguelike RPG (Difficulty: Extreme Demon)
+
+Client: Hardcore Roguelike Community
+Description:
+This game should be a procedurally generated dungeon-crawler with permadeath and unique character progression. The map, enemies, and items should be randomly generated each run. Include deep mechanics like skill synergies and difficulty scaling. Make sure the code is extremely modular and well-documented, as future expansions will be added.
+
+Core Skills:
+
+    Procedural level generation
+
+    Advanced AI behaviors
+
+    Complex inventory and skill systems
+
+    Balancing for replayability
+
+Final Notes
+
+If you can build your way up through these projects, you'll have all the skills necessary to create a polished 2D RPG with Mini2Dx! Plus, by prioritizing clean and well-documented code from the beginning, you'll make your future projects much easier to expand and maintain.
+
+Which one do you want to start with? 😊
