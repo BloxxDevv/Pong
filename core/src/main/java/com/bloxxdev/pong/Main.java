@@ -4,7 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.bloxxdev.pong.scenes.Menu;
+import com.bloxxdev.pong.screens.Menu;
 
 /*  */
 public class Main extends ApplicationAdapter {
