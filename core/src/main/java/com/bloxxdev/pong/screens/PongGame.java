@@ -10,6 +10,9 @@ public class PongGame extends ScreenAdapter{
     //Flag whether the game should render or not
     public boolean shouldRender = false;
 
+    public static final int LEFT_SIDE = 0;
+    public static final int RIGHT_SIDE = 1;
+
     //Flag whether the game should tick or not
     public boolean shouldTick = false;
 
@@ -19,7 +22,7 @@ public class PongGame extends ScreenAdapter{
 
     private Ball ball;
 
-    private boolean side = false; //False = left, True = right
+    private int side = LEFT_SIDE;
 
     public static boolean paused = true;
 
@@ -83,19 +86,21 @@ public class PongGame extends ScreenAdapter{
         //Left Paddle Controls
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             leftPaddle.direction[Paddle.UP] = true;
-            if (paused) {
+            if (paused && side == LEFT_SIDE) {
                 ball.direction[Ball.UP] = true;
+                ball.direction[Ball.RIGHT] = true;
+                paused = false;
             }
-            paused = false;
         }else{
             leftPaddle.direction[Paddle.UP] = false;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             leftPaddle.direction[Paddle.DOWN] = true;
-            if (paused) {
+            if (paused && side == LEFT_SIDE) {
                 ball.direction[Ball.DOWN] = true;
+                ball.direction[Ball.RIGHT] = true;
+                paused = false;
             }
-            paused = false;
         }else{
             leftPaddle.direction[Paddle.DOWN] = false;
         }
@@ -103,19 +108,21 @@ public class PongGame extends ScreenAdapter{
         //Right Paddle Controls
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_7)) {
             rightPaddle.direction[Paddle.UP] = true;
-            if (paused) {
+            if (paused && side == RIGHT_SIDE) {
                 ball.direction[Ball.UP] = true;
+                ball.direction[Ball.LEFT] = true;
+                paused = false;
             }
-            paused = false;
         }else{
             rightPaddle.direction[Paddle.UP] = false;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.NUMPAD_4)) {
             rightPaddle.direction[Paddle.DOWN] = true;
-            if (paused) {
+            if (paused && side == RIGHT_SIDE) {
                 ball.direction[Ball.DOWN] = true;
+                ball.direction[Ball.LEFT] = true;
+                paused = false;
             }
-            paused = false;
         }else{
             rightPaddle.direction[Paddle.DOWN] = false;
         }
