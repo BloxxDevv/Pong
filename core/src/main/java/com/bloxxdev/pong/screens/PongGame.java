@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.bloxxdev.pong.gameObjects.Ball;
+import com.bloxxdev.pong.gameObjects.MiddleLine;
 import com.bloxxdev.pong.gameObjects.Paddle;
 
 public class PongGame extends ScreenAdapter{
@@ -26,7 +27,7 @@ public class PongGame extends ScreenAdapter{
 
     public static boolean paused = true;
 
-    
+    private MiddleLine middleLine;    
 
     @Override
     public void show() {
@@ -42,6 +43,8 @@ public class PongGame extends ScreenAdapter{
         rightPaddle = new Paddle(Gdx.graphics.getWidth()-Paddle.PADDLE_WIDTH, Gdx.graphics.getHeight()/2-Paddle.PADDLE_HEIGHT/2);
     
         ball = new Ball(Paddle.PADDLE_WIDTH, Gdx.graphics.getHeight()/2-Ball.BALL_SIZE/2);
+
+        middleLine = new MiddleLine();
     }
 
     public void tick(){
@@ -65,6 +68,8 @@ public class PongGame extends ScreenAdapter{
             rightPaddle.render();
             
             ball.render();
+
+            middleLine.render();
         }
     }
 
