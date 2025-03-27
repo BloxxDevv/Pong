@@ -30,8 +30,14 @@ public class Font {
     }
 
     public void drawScore(int score, int x, int y, int scaling){
+        String scoreString = String.valueOf(score);
+        
         spriteBatch.begin();
-        spriteBatch.draw(scoreFont[score], x, y, FONT_WIDTH*scaling, FONT_HEIGHT*scaling);
+
+        for (int i = 0; i < scoreString.length(); i++) {
+            spriteBatch.draw(scoreFont[Integer.parseInt(String.valueOf(scoreString.charAt(i)))], x + i*SPACING*scaling + i*FONT_WIDTH*scaling, y, FONT_WIDTH*scaling, FONT_HEIGHT*scaling);
+        }
+
         spriteBatch.end();
     }
 }
