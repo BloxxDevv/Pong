@@ -17,14 +17,16 @@ public class PongGame extends ScreenAdapter{
     public boolean shouldTick = false;
 
     //Paddles (the players)
-    private Paddle leftPaddle;
-    private Paddle rightPaddle;
+    public static Paddle leftPaddle;
+    public static Paddle rightPaddle;
 
     private Ball ball;
 
-    private int side = LEFT_SIDE;
+    public int side = LEFT_SIDE;
 
     public static boolean paused = true;
+
+    
 
     @Override
     public void show() {
@@ -126,5 +128,10 @@ public class PongGame extends ScreenAdapter{
         }else{
             rightPaddle.direction[Paddle.DOWN] = false;
         }
+    }
+
+    public void reset(){
+        leftPaddle.reset();
+        rightPaddle.reset();
     }
 }

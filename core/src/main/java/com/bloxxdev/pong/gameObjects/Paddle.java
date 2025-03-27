@@ -68,4 +68,15 @@ public class Paddle {
         renderer.dispose();
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void reset(){
+        y = Gdx.graphics.getHeight()/2-Paddle.PADDLE_HEIGHT/2;
+    }
 }

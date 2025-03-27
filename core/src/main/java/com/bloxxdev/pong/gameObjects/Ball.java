@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
+import com.bloxxdev.pong.Main;
 import com.bloxxdev.pong.screens.PongGame;
 
 //Class Of the bouncy ball
@@ -62,9 +63,41 @@ public class Ball {
         }
 
         if (direction[LEFT]) {
-            x-=SPEED;
+            if (x - Paddle.PADDLE_WIDTH < SPEED) {
+                if (y + BALL_SIZE > PongGame.leftPaddle.getY() && y < PongGame.leftPaddle.getY()+Paddle.PADDLE_HEIGHT) {
+                    int dist = x - Paddle.PADDLE_WIDTH;    //Distance ball to side
+
+                    x-= dist - (SPEED - dist);
+
+                    direction[LEFT] = false;
+                    direction[RIGHT] = true;
+                }else{
+                    PongGame.paused = true;
+                    ((PongGame)Main.instance.pongGameScreen).side = PongGame.RIGHT_SIDE;
+                    ((PongGame)Main.instance.pongGameScreen).reset();
+                    reset();
+                }
+            }else{
+                x-=SPEED;
+            }
         }else if (direction[RIGHT]) {
-            x+=SPEED;
+            if (x+BALL_SIZE+SPEED > Gdx.graphics.getWidth() - Paddle.PADDLE_WIDTH) {
+                if (y + BALL_SIZE > PongGame.rightPaddle.getY() && y < PongGame.rightPaddle.getY()+Paddle.PADDLE_HEIGHT) {
+                    int dist = Gdx.graphics.getWidth() - Paddle.PADDLE_WIDTH - (x+BALL_SIZE);    //Distance ball to side
+
+                    x+= dist - (SPEED - dist);
+
+                    direction[RIGHT] = false;
+                    direction[LEFT] = true;
+                }else{
+                    PongGame.paused = true;
+                    ((PongGame)Main.instance.pongGameScreen).side = PongGame.LEFT_SIDE;
+                    ((PongGame)Main.instance.pongGameScreen).reset();
+                    reset();
+                }
+            }else{
+                x+=SPEED;
+            }
         }
     }
 
@@ -94,5 +127,21 @@ public class Ball {
     //Free memory
     public void dispose(){
         renderer.dispose();
+    }
+
+    private void reset(){
+        for (int i = 0; i < direction.length; i++) {
+            direction[i] = false;
+        }
+
+        int side = ((PongGame)Main.instance.pongGameScreen).side;
+
+        if (side == PongGame.LEFT_SIDE) {
+            x = Paddle.PADDLE_WIDTH;
+        }else{
+            x = Gdx.graphics.getWidth()-Paddle.PADDLE_WIDTH-BALL_SIZE;
+        }
+
+        y = Gdx.graphics.getHeight()/2-Ball.BALL_SIZE/2;
     }
 }
