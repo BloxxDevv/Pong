@@ -3,6 +3,7 @@ package com.bloxxdev.pong.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.bloxxdev.pong.font.Font;
 import com.bloxxdev.pong.gameObjects.Ball;
 import com.bloxxdev.pong.gameObjects.MiddleLine;
 import com.bloxxdev.pong.gameObjects.Paddle;
@@ -29,6 +30,8 @@ public class PongGame extends ScreenAdapter{
 
     private MiddleLine middleLine;    
 
+    private Font font;
+
     public static int leftScore = 0;
     public static int rightScore = 0;
 
@@ -48,6 +51,7 @@ public class PongGame extends ScreenAdapter{
         ball = new Ball(Paddle.PADDLE_WIDTH, Gdx.graphics.getHeight()/2-Ball.BALL_SIZE/2);
 
         middleLine = new MiddleLine();
+        font = new Font();
     }
 
     public void tick(){
@@ -75,6 +79,8 @@ public class PongGame extends ScreenAdapter{
             ball.render();
 
             middleLine.render();
+
+            font.drawScore(rightScore, Gdx.graphics.getWidth()/2 + 40 , Gdx.graphics.getHeight() - 20 - Font.FONT_HEIGHT*5, 5);
         }
     }
 
