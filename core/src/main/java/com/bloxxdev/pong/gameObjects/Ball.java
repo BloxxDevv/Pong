@@ -74,6 +74,7 @@ public class Ball {
                 }else{
                     PongGame.paused = true;
                     ((PongGame)Main.instance.pongGameScreen).side = PongGame.RIGHT_SIDE;
+                    PongGame.rightScore++;
                     ((PongGame)Main.instance.pongGameScreen).reset();
                     reset();
                 }
@@ -92,6 +93,7 @@ public class Ball {
                 }else{
                     PongGame.paused = true;
                     ((PongGame)Main.instance.pongGameScreen).side = PongGame.LEFT_SIDE;
+                    PongGame.leftScore++;
                     ((PongGame)Main.instance.pongGameScreen).reset();
                     reset();
                 }

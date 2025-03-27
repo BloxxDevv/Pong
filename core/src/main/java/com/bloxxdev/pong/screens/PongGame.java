@@ -29,6 +29,9 @@ public class PongGame extends ScreenAdapter{
 
     private MiddleLine middleLine;    
 
+    public static int leftScore = 0;
+    public static int rightScore = 0;
+
     @Override
     public void show() {
         //Set flags
@@ -57,6 +60,8 @@ public class PongGame extends ScreenAdapter{
             rightPaddle.tick();
 
             ball.tick();
+
+            Gdx.graphics.setTitle(leftScore + " : " + rightScore);
         }
     }
 
