@@ -35,6 +35,14 @@ public class PongGame extends ScreenAdapter{
     public static int leftScore = 0;
     public static int rightScore = 0;
 
+    private int leftScoreLetterWidth;
+    private int leftScoreSpacingWidth;
+
+    private int leftFontX;
+    private int rightFontX;
+    private int scoreHeight;
+    private static final int fontScaling = 5;
+
     @Override
     public void show() {
         //Set flags
@@ -65,7 +73,12 @@ public class PongGame extends ScreenAdapter{
 
             ball.tick();
 
-            Gdx.graphics.setTitle(leftScore + " : " + rightScore);
+            leftScoreLetterWidth = String.valueOf(leftScore).length() * Font.FONT_WIDTH*5;
+            leftScoreSpacingWidth = (String.valueOf(leftScore).length()-1)*Font.SPACING*5;
+
+            leftFontX = Gdx.graphics.getWidth()/2 - 40 - leftScoreLetterWidth - leftScoreSpacingWidth;
+            rightFontX = Gdx.graphics.getWidth()/2 + 40;
+            scoreHeight = Gdx.graphics.getHeight() - 20 - Font.FONT_HEIGHT*5;
         }
     }
 
@@ -79,8 +92,9 @@ public class PongGame extends ScreenAdapter{
             ball.render();
 
             middleLine.render();
-
-            font.drawScore(rightScore, Gdx.graphics.getWidth()/2 + 40 , Gdx.graphics.getHeight() - 20 - Font.FONT_HEIGHT*5, 5);
+     
+            font.drawScore(leftScore, leftFontX, scoreHeight, fontScaling);
+            font.drawScore(rightScore,  rightFontX, scoreHeight, fontScaling);
         }
     }
 
@@ -95,8 +109,13 @@ public class PongGame extends ScreenAdapter{
         shouldTick = false;
         shouldRender = false;
 
-        leftPaddle.dispose();
-        rightPaddle.dispose();
+        if (leftPaddle != null) {
+            leftPaddle.dispose();
+        }
+
+        if (rightPaddle != null) {
+            rightPaddle.dispose();
+        }
     }
 
     private void checkKeys(){

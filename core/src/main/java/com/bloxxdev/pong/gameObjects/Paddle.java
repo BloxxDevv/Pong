@@ -65,7 +65,7 @@ public class Paddle {
 
     //free memory
     public void dispose(){
-        renderer.dispose();
+        
     }
 
     public int getX() {
