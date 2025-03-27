@@ -1,5 +1,6 @@
 package com.bloxxdev.pong.gameObjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -29,15 +30,40 @@ public class Ball {
 
     private void move(){
         if (direction[UP]) {
-            y+=SPEED;
+            //If the ball would go outside of the screen on top
+            if (Gdx.graphics.getHeight() - (y+BALL_SIZE) < SPEED) {
+                //Top Bounce
+                int dist = Gdx.graphics.getHeight() - (y+BALL_SIZE);    //Distance ball to top
+
+                //Apply momentum buffer formula
+                y+= dist - (SPEED - dist);
+
+                //Flip direction
+                direction[UP] = false;
+                direction[DOWN] = true;
+            }else{
+                y+=SPEED;
+            }
+        }else if (direction[DOWN]) {
+            //If the ball would go outside of the screen on bottom
+            if (y < SPEED) {
+                //Top Bounce
+                int dist = y;    //Distance ball to top
+
+                //Apply momentum buffer formula
+                y-= dist - (SPEED - dist);
+
+                //Flip direction
+                direction[DOWN] = false;
+                direction[UP] = true;
+            }else{
+                y-=SPEED;
+            }
         }
-        if (direction[DOWN]) {
-            y-=SPEED;
-        }
+
         if (direction[LEFT]) {
             x-=SPEED;
-        }
-        if (direction[RIGHT]) {
+        }else if (direction[RIGHT]) {
             x+=SPEED;
         }
     }
