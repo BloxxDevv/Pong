@@ -1,6 +1,8 @@
 package com.bloxxdev.pong.gameObjects;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
@@ -25,6 +27,8 @@ public class Ball {
 
     ShapeRenderer renderer;
 
+    Sound plop = Gdx.audio.newSound(Gdx.files.internal("Plop.mp3"));
+
     public boolean[] direction = new boolean[]{
         false, false,false, false       //UP, DOWN, LEFT, RIGHT 
     };
@@ -38,6 +42,8 @@ public class Ball {
 
                 //Apply momentum buffer formula
                 y+= dist - (SPEED - dist);
+
+                playPlopSound();
 
                 //Flip direction
                 direction[UP] = false;
@@ -54,6 +60,8 @@ public class Ball {
                 //Apply momentum buffer formula
                 y-= dist - (SPEED - dist);
 
+                playPlopSound();
+
                 //Flip direction
                 direction[DOWN] = false;
                 direction[UP] = true;
@@ -68,6 +76,8 @@ public class Ball {
                     int dist = x - Paddle.PADDLE_WIDTH;    //Distance ball to side
 
                     x-= dist - (SPEED - dist);
+
+                    playPlopSound();
 
                     direction[LEFT] = false;
                     direction[RIGHT] = true;
@@ -87,6 +97,8 @@ public class Ball {
                     int dist = Gdx.graphics.getWidth() - Paddle.PADDLE_WIDTH - (x+BALL_SIZE);    //Distance ball to side
 
                     x+= dist - (SPEED - dist);
+
+                    playPlopSound();
 
                     direction[RIGHT] = false;
                     direction[LEFT] = true;
@@ -109,6 +121,8 @@ public class Ball {
         this.y = y;
 
         renderer = new ShapeRenderer();
+
+        plop.play(0.0F);
     }
 
     //Ball calculations/movement
@@ -145,5 +159,9 @@ public class Ball {
         }
 
         y = Gdx.graphics.getHeight()/2-Ball.BALL_SIZE/2;
+    }
+
+    private void playPlopSound(){
+        plop.play(100.0F);
     }
 }
