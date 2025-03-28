@@ -30,7 +30,11 @@ public class Paddle {
 
     //Move if the paddle stays in the boundries
     private void move(int direction){
-        if (y + SPEED*direction >= 0 && y + SPEED*direction <= Gdx.graphics.getHeight() - PADDLE_HEIGHT) {
+        if (y + SPEED*direction < 0) {
+            y = 0;
+        }else if (y + SPEED*direction > Gdx.graphics.getHeight() - PADDLE_HEIGHT){
+            y = Gdx.graphics.getHeight() - PADDLE_HEIGHT;
+        }else{
             y += SPEED*direction;
         }
     }
